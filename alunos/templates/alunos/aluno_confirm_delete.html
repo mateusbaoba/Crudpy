@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Excluir aluno</title>
+</head>
+<body>
+    <h1>Excluir aluno</h1>
+    <p>Deseja excluir {{ aluno.nome }}?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, excluir</button>
+    </form>
+
+    <p><a href="{% url 'alunos:lista' %}">Cancelar</a></p>
+</body>
+</html>
