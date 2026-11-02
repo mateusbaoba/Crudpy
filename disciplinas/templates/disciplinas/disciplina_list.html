@@ -1,0 +1,14 @@
+<h1>Disciplinas</h1>
+<a href="{% url 'disciplinas:criar' %}">Cadastrar disciplina</a>
+
+<ul>
+    {% for disciplina in disciplinas %}
+        <li>
+            <a href="{% url 'disciplinas:detalhe' disciplina.pk %}">
+                {{ disciplina.nome }}
+            </a>
+        </li>
+    {% empty %}
+        <li>Nenhuma disciplina cadastrada.</li>
+    {% endfor %}
+</ul>

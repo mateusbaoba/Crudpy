@@ -8,3 +8,9 @@ class Aluno(models.Model):
 
     def __str__(self):
         return f"{self.nome} ({self.matricula})"
+
+    disciplina = models.ForeignKey('disciplinas.Disciplina', 
+                                   on_delete=models.SET_NULL, 
+                                   null=True, 
+                                   blank=True,
+                                   related_name='alunos')

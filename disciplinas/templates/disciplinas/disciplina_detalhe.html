@@ -1,0 +1,15 @@
+<h1>{{ disciplina.nome }}</h1>
+<p>{{ disciplina.descricao }}</p>
+
+<a href="{% url 'disciplinas:matricular' disciplina.pk %}">
+    Matricular alunos
+</a>
+
+<h2>Alunos matriculados</h2>
+<ul>
+    {% for aluno in alunos %}
+        <li>{{ aluno.nome }} — {{ aluno.matricula }}</li>
+    {% empty %}
+        <li>Nenhum aluno matriculado.</li>
+    {% endfor %}
+</ul>
