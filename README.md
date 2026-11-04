@@ -13,6 +13,8 @@ editar e excluir alunos. As telas de alunos exigem autenticacao.
 No Windows, abra o terminal na pasta do projeto e execute:
 
 ```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
