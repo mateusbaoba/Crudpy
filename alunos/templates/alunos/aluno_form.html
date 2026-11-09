@@ -10,9 +10,21 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <h3>Disciplinas de {{ aluno.nome }}:</h3>
+        <ul>
+        {% for disciplina in aluno.disciplinas.all %}
+            <li>{{ disciplina.nome }} ({{ disciplina.carga_horaria }}h)</li>
+        {% empty %}
+            <li>Nenhuma disciplina vinculada.</li>
+        {% endfor %}
+        </ul>
         <button type="submit">Salvar</button>
     </form>
 
     <p><a href="{% url 'alunos:lista' %}">Voltar à lista</a></p>
+    <form method="post" action="{% url 'contas:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>
 </body>
 </html>

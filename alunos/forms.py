@@ -5,4 +5,7 @@ from .models import Aluno
 class AlunoForm(forms.ModelForm):
     class Meta:
         model = Aluno
-        fields = ['nome', 'email', 'matricula']
+        fields = ['nome', 'email', 'matricula', 'disciplinas']
+        widgets = {
+            'disciplinas': forms.CheckboxSelectMultiple(),
+        }

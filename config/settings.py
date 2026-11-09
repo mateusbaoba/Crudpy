@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'alunos',
     'disciplinas',
+    'contas',
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,6 @@ MAILERS = {
     },
 }
 
-LOGIN_URL = "login"
+LOGIN_URL = "contas:login"
 LOGIN_REDIRECT_URL = "alunos:lista"
-LOGOUT_REDIRECT_URL = "login"
+LOGOUT_REDIRECT_URL = "contas:login"

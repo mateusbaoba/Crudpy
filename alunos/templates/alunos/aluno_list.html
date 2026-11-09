@@ -20,5 +20,21 @@
             <li>Nenhum aluno cadastrado.</li>
         {% endfor %}
     </ul>
+    <form method=""get" action"{% url 'alunos:lista' %}">
+        <input
+            id=""busca" 
+            type="search" 
+            name="q" 
+            placeholder="Pesquisar..."
+            value="{{ termo }}">
+        <button type="submit">Pesquisar</button>
+        {% if request.GET.q %}
+            <a href="{% url 'alunos:lista' %}">Limpar</a>
+        {% endif %}
+    </form>
+    <form method="post" action="{% url 'contas:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>
 </body>
 </html>

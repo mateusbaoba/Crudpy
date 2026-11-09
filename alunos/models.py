@@ -6,11 +6,12 @@ class Aluno(models.Model):
     email = models.EmailField()
     matricula = models.CharField(max_length=20  , unique=True)
 
+    # Relação N:N
+    disciplinas = models.ManyToManyField(
+        'disciplinas.Disciplina',
+        related_name='alunos',
+        blank=True
+    )
+
     def __str__(self):
         return f"{self.nome} ({self.matricula})"
-
-    disciplina = models.ForeignKey('disciplinas.Disciplina', 
-                                   on_delete=models.SET_NULL, 
-                                   null=True, 
-                                   blank=True,
-                                   related_name='alunos')

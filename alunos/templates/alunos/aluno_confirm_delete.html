@@ -14,5 +14,10 @@
     </form>
 
     <p><a href="{% url 'alunos:lista' %}">Cancelar</a></p>
+    
+    <form method="post" action="{% url 'contas:logout' %}">
+        {% csrf_token %}
+        <button type="submit">Sair</button>
+    </form>
 </body>
 </html>
