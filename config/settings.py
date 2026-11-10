@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'alunos',
     'disciplinas',
     'contas',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -131,5 +132,5 @@ MAILERS = {
 }
 
 LOGIN_URL = "contas:login"
-LOGIN_REDIRECT_URL = "alunos:lista"
+LOGIN_REDIRECT_URL = "dashboard:home"
 LOGOUT_REDIRECT_URL = "contas:login"
