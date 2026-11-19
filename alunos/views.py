@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .forms import AlunoForm
 from .models import Aluno
@@ -7,7 +8,12 @@ from .models import Aluno
 
 @login_required
 def lista(request):
+    termo = (request.GET.get("q") or "").strip()
+    
     alunos = Aluno.objects.all().order_by("nome")
+    if termo:
+        alunos = alunos.filter(Q(nome__icontains=termo) 
+                              | Q(email__icontains=termo))
     return render(request, "alunos/aluno_list.html", {"alunos": alunos})
 
 @login_required

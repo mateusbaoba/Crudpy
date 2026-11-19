@@ -12,3 +12,7 @@
         <li>Nenhuma disciplina cadastrada.</li>
     {% endfor %}
 </ul>
+<form method="post" action="{% url 'contas:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>

@@ -18,12 +18,16 @@ from django.contrib import admin
 from django.urls import include, path
 from alunos import views as alunos_views
 
+import alunos
+import dashboard
+
 app_name = "alunos"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("contas/", include("django.contrib.auth.urls")),
+    path("contas/", include("contas.urls"), name="contas"),
     path("alunos/", include("alunos.urls")),
     path("", alunos_views.lista, name="home"),
     path("disciplinas/", include("disciplinas.urls")),
+    path("", include("dashboard.urls"), name ="home"),
 ]

@@ -7,3 +7,8 @@
 </form>
 
 <a href="{% url 'disciplinas:detalhe' disciplina.pk %}">Voltar</a>
+
+<form method="post" action="{% url 'contas:logout' %}">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+</form>

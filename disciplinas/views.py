@@ -13,8 +13,8 @@ def lista(request):
                   {"disciplinas": disciplinas})
 
 def criar(request):
-    if request.method == "POST":  
-        form = DisciplinaForm(request.POST)      
+    form = DisciplinaForm(request.POST or None)
+    if request.method == "POST":
         if form.is_valid():
             form.save()
             return redirect("disciplinas:lista")
@@ -35,7 +35,7 @@ def detalhe(request, pk):
 
 def matricular(request, pk):
     disciplina = get_object_or_404(Disciplina, pk=pk)
-    form = MatriculaForm(request.POST or None, disciplina=disciplina)
+    form = MatriculaForm(request.POST or None, disciplinas=disciplinas)
 
     if request.method == "POST":
         if form.is_valid():
@@ -45,6 +45,6 @@ def matricular(request, pk):
     return render(request,
                   "disciplinas/matricular.html",
                   {"form": form, 
-                   "disciplina": disciplina,
+                   "disciplinas": disciplinas,
                    "alunos": disciplina.alunos.order_by("nome")
                    })
