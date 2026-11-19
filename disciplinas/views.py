@@ -13,12 +13,14 @@ def lista(request):
                   {"disciplinas": disciplinas})
 
 def criar(request):
-    form = DisciplinaForm(request.POST or None)
-    if form == "POST":        
+    if request.method == "POST":  
+        form = DisciplinaForm(request.POST)      
         if form.is_valid():
             form.save()
             return redirect("disciplinas:lista")
-   
+    else:
+        form = DisciplinaForm()
+        
     return render(request, 
                   "disciplinas/disciplina_form.html", 
                   {"form": form})

@@ -6,7 +6,7 @@ from .models import Disciplina
 class DisciplinaForm(forms.ModelForm):
     class Meta:
         model = Disciplina
-        fields = ['id', 'nome', 'descricao', 'carga_horaria']
+        fields = ['nome', 'descricao', 'carga_horaria']
 
 
 class MatriculaForm(forms.Form):

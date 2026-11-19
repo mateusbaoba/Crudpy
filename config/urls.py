@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from alunos import views as alunos_views
 
 app_name = "alunos"
 
@@ -23,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("contas/", include("django.contrib.auth.urls")),
     path("alunos/", include("alunos.urls")),
-    path("", include("alunos.urls")),
+    path("", alunos_views.lista, name="home"),
     path("disciplinas/", include("disciplinas.urls")),
 ]
